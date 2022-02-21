@@ -10,3 +10,7 @@ body {
 html.dark .MuiFormLabel-root{
   color: #fff;
 }
+
+html.dark #__next{
+  background-color: #262626;
+}
