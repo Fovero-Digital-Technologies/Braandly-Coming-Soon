@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 // import MasterLayout from './MasterLayout';
-import Brandstartheader from "../Headers/Subheaders/Brandstartheader";
+import MainHeader from "../Headers/Mainheader";
+import Mobileheader from "../Headers/Mobileheader";
 import Metadata from "../Headers/Partials/Metadata";
 import Notificationheader from "../Headers/Notifications/Notificationheader";
 import Footer from '../Footers/Footer';
@@ -23,7 +24,8 @@ const DefaultLayout = (props: Props) => {
         metadescription={props.desc}
       />
       <Notificationheader />
-      <Brandstartheader />
+      <MainHeader />
+      <Mobileheader />
       <div className="h-full dark:bg-dark dark:text-light">
         {props.children}
       </div>
