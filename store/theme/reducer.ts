@@ -5,7 +5,7 @@ export const initState = {
 };
 
 
-function reducer(state = initState, action) {
+function reducer(state = initState, action:any) {
     switch (action.type) {
         case actionTypes.SET_DARK_MODE:
             console.log(action)
