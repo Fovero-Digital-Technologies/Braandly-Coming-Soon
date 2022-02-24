@@ -26,7 +26,7 @@ const MobileHeader = (props: any) => {
     }
   };
   return (
-    <header className="bg-light dark:bg-dark-background py-2 px-5 flex md:hidden justify-between items-center sticky top-0">
+    <header className="bg-light dark:bg-dark-background py-2 px-5 flex md:hidden justify-between items-center sticky top-0 shadow-sm">
       <Link href="/">
         <a>
           <Image

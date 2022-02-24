@@ -14,3 +14,14 @@ html.dark .MuiFormLabel-root{
 html.dark #__next{
   background-color: #262626;
 }
+
+html.dark .MuiInputBase-input.MuiInput-input{
+  color: #fff;
+}
+
+html.dark .MuiInput-underline::before{
+  border-color: #fff;
+}
+html.dark .MuiInput-underline::after{
+  border-color: #FFA900;
+}

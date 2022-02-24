@@ -11,6 +11,7 @@
     "@material-ui/core": "^4.12.3",
     "antd": "^4.18.7",
     "axios": "^0.26.0",
+    "emailjs-com": "^3.2.0",
     "framer-motion": "^4.1.17",
     "lottie-web": "^5.8.1",
     "next": "12.1.0",
