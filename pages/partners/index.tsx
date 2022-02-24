@@ -31,22 +31,22 @@ function Partners() {
 
             <div className="py-20 px-5 lg:px-0">
                 <div className="text-center mx-auto" style={{maxWidth: "700px"}}>
-                    <h2 className="text-4xl font-bold mb-5 dark:text-white leading-tight ">Giving You Top-Notch Benefits</h2>
-                    <p className="text-lg leading-tight mb-5">Velit cupidatat ea ad ullamco officia ipsum ex incididunt cillum esse pariatur cupidatat. Pariatur mollit nulla voluptate duis et commodo excepteur cillum quis dolore excepteur ullamco consequat.</p>
+                    <h2 className="text-4xl font-bold mb-5 dark:text-white leading-tight ">Giving You Amazing Benefits</h2>
+                    <p className="text-lg leading-tight mb-5">We are excited to invite you to join a vision which would revolutionize branding coupled with amazing offers for you.</p>
                 </div>
                 
                 <div className="container mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-8 items-center">
                         <img src="/svg/solution.svg" />
                         <div>
-                            <h3 className="text-4xl font-bold mb-5 dark:text-white leading-tight">Elit enim tempor incididunt incididunt proidente.</h3>
+                            <h3 className="text-4xl font-bold mb-5 dark:text-white leading-tight">Lifetime Premium Access!!!</h3>
                             <p className="text-lg leading-tight mb-5">Lorem ea cupidatat ea veniam culpa duis aliqua enim dolor in sint occaecat occaecat consequat. Ex culpa nulla nostrud mollit sint eu esse qui est. Magna pariatur sunt culpa sit ex quis exercitation.</p>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-8 items-center">
                         <div>
-                            <h3 className="text-4xl font-bold mb-5 dark:text-white leading-tight">Elit enim tempor incididunt incididunt proidente.</h3>
+                            <h3 className="text-4xl font-bold mb-5 dark:text-white leading-tight">And More Returns!!!</h3>
                             <p className="text-lg leading-tight mb-5">Lorem ea cupidatat ea veniam culpa duis aliqua enim dolor in sint occaecat occaecat consequat. Ex culpa nulla nostrud mollit sint eu esse qui est. Magna pariatur sunt culpa sit ex quis exercitation.</p>
                         </div>
                         <img src="/svg/solution.svg" />
@@ -58,8 +58,8 @@ function Partners() {
 
             <div className="bg-primary py-10 px-5 mb-52" id="partners_form">
                 <div className="container mx-auto text-center" style={{maxWidth:"700px"}}>
-                    <h3 className="text-5xl font-bold mb-5 text-white">Elit enim tempor incididunt incididunt proidente.</h3>
-                    <p className="text-white text-lg leading-tight mb-10">Lorem ea cupidatat ea veniam culpa duis aliqua enim dolor in sint occaecat occaecat consequat.</p>
+                    <h3 className="text-5xl font-bold mb-5 text-white">Become a Partner to Braandly today.</h3>
+                    <p className="text-white text-lg leading-tight mb-10">Fill up the form and let us begin a beautiful partnership.</p>
                 </div>
 
                 <div className="rounded bg-white dark:bg-dark-background px-8 py-10 mx-auto -mb-32 shadow-xl max-w-[500px]">

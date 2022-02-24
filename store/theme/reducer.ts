@@ -12,13 +12,13 @@ interface Action {
 function reducer(state = initState, action:Action) {
     switch (action.type) {
         case actionTypes.SET_DARK_MODE:
-            console.log(action)
+            // console.log(action)
             return {
                 ...state,
                 ...{ lightMode: false },
             };
         case actionTypes.SET_LIGHT_MODE:
-            console.log(action)
+            // console.log(action)
             return {
                 ...state,
                 ...{ lightMode: true },

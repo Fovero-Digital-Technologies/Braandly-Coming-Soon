@@ -12,4 +12,8 @@ export const menuData:menus[] = [
         title: "Partner with Braandly",
         link: "/partners"
     },
+    {
+        title: "Contact",
+        link: "/contact"
+    },
 ]

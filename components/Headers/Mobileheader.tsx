@@ -52,6 +52,7 @@ const MobileHeader = (props: any) => {
               dispatch(setLightModeTheme());
             }
           }}
+          checked={props.theme.lightMode}
           className="bg-primary dark:bg-warning text-lg"
         />
 

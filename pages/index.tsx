@@ -30,7 +30,7 @@ const Home: NextPage = () => {
           <div className="container mx-auto pt-2 md:pt-10 pb-0  lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-10 lg:gap-20 pt-5">
               <div className="flex flex-col justify-center lg:col-span-5">
-                <h1 className="text-4xl md:text-6xl font-bold mb-10 dark:text-white leading-loose">
+                <h1 className="text-4xl md:text-6xl font-bold mb-10 dark:text-white leading-normal lg:leading-loose">
                   We are building a
                   <span className="text-primary dark:text-warning">
                     {" "}
