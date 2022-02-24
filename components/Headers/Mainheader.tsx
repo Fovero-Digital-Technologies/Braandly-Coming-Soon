@@ -40,7 +40,7 @@ const MainHeader = (props: any) => {
   // }, [])
 
   return (
-    <header className="bg-light dark:bg-dark-background py-2 px-5 hidden md:flex justify-between items-center sticky top-0">
+    <header className="bg-light dark:bg-dark-background py-2 px-5 hidden md:flex justify-between items-center sticky top-0 z-[100]">
       <Link href="/">
         <a>
           <Image

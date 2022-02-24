@@ -12,7 +12,7 @@ const SignUp = () => {
         {!signedUp ? (
           <>
             <h3 className="text-2xl md:text-4xl font-bold mb-5 text-white leading-loose text-center">
-              Be The First To <span className="underline">Get Notified</span>
+            <span className="underline">Get Early Access</span> and be the first to <span className="underline">Get Notified</span>
             </h3>
             <p className="text-xl leading-loose text-center text-white">
               I really want you to be the first person to use our amazing

@@ -12,7 +12,7 @@ import { menuData } from "../../data/menu";
 type Props = {};
 
 const MobileHeader = (props: any) => {
-  console.log(props);
+  // console.log(props);
   const [showMobileNav, setShowMobileNav] = useState<boolean>(false);
 
   const router = useRouter();
@@ -26,7 +26,7 @@ const MobileHeader = (props: any) => {
     }
   };
   return (
-    <header className="bg-light dark:bg-dark-background py-2 px-5 flex md:hidden justify-between items-center ">
+    <header className="bg-light dark:bg-dark-background py-2 px-5 flex md:hidden justify-between items-center sticky top-0">
       <Link href="/">
         <a>
           <Image

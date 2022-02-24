@@ -15,11 +15,11 @@ function Partners() {
                     <div className="grid grid-cols-1 lg:grid-cols-7 pt-5">
 
                         <div className="flex flex-col justify-center col-span-3">
-                            <h1 className="text-5xl md:text-6xl font-bold mb-5 dark:text-white leading-loose"><span className="text-primary dark:text-warning">Join, Partner and Gain Limitless Opportunities</span> With Braandly</h1>
+                            <h1 className="text-5xl md:text-6xl font-bold mb-5 dark:text-white leading-normal lg:leading-relaxed"><span className="text-primary dark:text-warning">Join, Partner and Gain Limitless Opportunities</span> With Braandly</h1>
 
                             <p className="text-xl leading-loose mb-5">Braandly is currently searching for interested partners like you to invest in our software as we make global impact in the branding and marketing industry.</p>
 
-                            <a href="#partners_form" className="btn-primary  block dark:btn-warning text-2xl rounded text-white rounded px-6 py-3 font-medium w-full md:w-1/2 text-center">Get Started</a>
+                            <a href="#partners_form" className="bg-primary block dark:bg-warning text-2xl rounded text-white hover:text-white rounded px-6 py-3 font-medium w-full md:w-1/2 text-center">Get Started</a>
                         </div>
                         <div className="hidden lg:block lg:col-span-4">
                             <img src="/svg/collaborators.svg" />
