@@ -6,10 +6,13 @@ import emailjs from "emailjs-com";
 import { FormEvent } from "react";
 import { FaCircleNotch } from "react-icons/fa";
 import { Tooltip, message } from "antd";
+import axios from "axios";
+import {baseUrl} from "../../server/index"
+
 
 function Partners() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [sent, setSent] = useState<boolean>(false);
+  const [sent, setSent] = useState<boolean>(true);
   const [from_name, set_From_Name] = useState<string>("");
   const [companyName, setCompanyName] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
@@ -20,40 +23,22 @@ function Partners() {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const emailMessage = {
-      from_name,
-      from_email,
-      to_name: process.env.NEXT_PUBLIC_EMAILJS_EMAILNAME
-        ? process.env.NEXT_PUBLIC_EMAILJS_EMAILNAME
-        : "Braandly",
-      message: `
-          Company Name: ${companyName},
-          Phone Number: ${phoneNumber},
-          Location: ${location},
-          message: ${eMessage}
-          `,
-      reply_to: from_email
-    };
-
-    // console.log(emailMessage);
-    emailjs
-      .send(
-        `${process.env.NEXT_PUBLIC_EMAILJS1_SERVICEID}`,
-        `${process.env.NEXT_PUBLIC_EMAILJS1_TEMPLATEID}`,
-        emailMessage,
-        `${process.env.NEXT_PUBLIC_EMAILJS1_USERID}`
-      )
+    const body = {
+      
+    }
+    
+    axios.post(`${baseUrl}/mails/partner`)
       .then(
         (response) => {
             setLoading(false)
-        //   console.log("SUCCESS!", response.status, response.text);
-          message.success("Message sent successfully")
-          setSent(true)
+          console.log("SUCCESS!", response);
+          // message.success("Message sent successfully")
+          // setSent(true)
         },
         (err) => {
             setLoading(false)
-        //   console.log("FAILED...", err);
-          message.error("An error occured, please try again")
+          console.log("FAILED...", err);
+          // message.error("An error occured, please try again")
         }
       );
   };
@@ -245,8 +230,8 @@ function Partners() {
                 <p className="text-white text-2xl leading-tight mb-10">
                   We are so glad you took an interest in our project
                 </p>
-                <p className="text-white text-lg leading-tight mb-10">
-                Please check your email for confirmation...
+                <p className="text-white text-xl leading-tight mb-10 dark:text-warning font-bold animate-pulse">
+                We would get back to you in less than 24 hours...
                 </p>
               </div>}
           </div>

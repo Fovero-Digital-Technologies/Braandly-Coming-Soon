@@ -3,7 +3,7 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     title: "Braandly",
-    titleDescription: "Complete Branding Workflow"
+    titleDescription: "Where great brands are built"
   }
 };
 

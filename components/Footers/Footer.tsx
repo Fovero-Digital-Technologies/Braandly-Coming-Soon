@@ -14,7 +14,7 @@ const Footer = (props: Props) => {
                         height={28}
                         />
                     </div>
-                <span className="text-center text-base dark:text-white" style={{width:"96%"}}>&copy; {new Date().getFullYear()} Braandly by <a href="" className={`text-primary dark:text-warning`}>Odewale Ayomide</a> @ <a href="#" className={`text-primary dark:text-warning`}>Fovero Digital Technologies</a></span>
+                <span className="text-center text-base dark:text-white" style={{width:"96%"}}>&copy; {new Date().getFullYear()} Braandly by <a href="https://www.ayomideodewale.com" className={`text-primary dark:text-warning`}>Odewale Ayomide</a> @ <a href="#" className={`text-primary dark:text-warning`}>Fovero Digital Technologies</a></span>
             </div>
         </footer>
   )
