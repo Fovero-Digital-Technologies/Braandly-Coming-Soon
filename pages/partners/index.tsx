@@ -12,7 +12,7 @@ import {baseUrl} from "../../server/index"
 
 function Partners() {
   const [loading, setLoading] = useState<boolean>(false);
-  const [sent, setSent] = useState<boolean>(true);
+  const [sent, setSent] = useState<boolean>(false);
   const [from_name, set_From_Name] = useState<string>("");
   const [companyName, setCompanyName] = useState<string>("");
   const [phoneNumber, setPhoneNumber] = useState<string>("");
