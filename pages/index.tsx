@@ -1,13 +1,30 @@
+import {useState, useEffect} from "react"
 import type { NextPage } from "next";
 // import { connect, useDispatch } from "react-redux";
 // import Lottie from 'react-lottie';
 import { LottieAnimation } from "react-lottie-tools";
-import codetyping from "../public/animation/codetyping.json";
+import dynamic from "next/dynamic";
+// const LottieAnimation = dynamic(() => import("react-lottie-tools").then((mod:any) => mod.LottieAnimation), {
+//   ssr: false
+// });
+// import codetyping from "../public/animation/codetyping.json";
 import SignUp from "../components/Forms/SignUp";
 import DefaultLayout from "../components/Layouts/DefaultLayout";
 
 const Home: NextPage = () => {
 //   const dispatch = useDispatch();
+const [codetyping, setCodeTyping] = useState<any>(null);
+
+useEffect(()=> {
+  if(codetyping === null){
+    import('../public/animation/codetyping.json')
+  .then(data => {
+    // let stringData = JSON.stringify(data)
+    setCodeTyping(data)
+  })
+  }
+},[codetyping])
+
 
   const tools: string[] = [
     "Brand Creator",
@@ -54,13 +71,13 @@ const Home: NextPage = () => {
               <div className="flex item-center justify-center lg:col-span-5 overflow-hidden">
                 <div className="hidden lg:block">
                   {/* <Lottie options={defaultOptions} width={520}  /> */}
-                  <LottieAnimation
+                  {codetyping !== null && <LottieAnimation
                     animation={codetyping}
                     //   autoPlay
                       loop={true}
                     //   style={{ width: "60px", height: "60px" }}
                     //   justPlayInView
-                  />
+                  />}
                 </div>
                 <p className="block lg:hidden text-[200px]">👍</p>
               </div>
@@ -99,13 +116,13 @@ const Home: NextPage = () => {
           </div>
 
           <div className="py-10  lg:px-0">
-            <h3 className="text-2xl md:text-6xl font-bold mb-2 dark:text-white leading-loose text-center">
+            <h2 className="text-2xl md:text-6xl font-bold mb-2 dark:text-white leading-loose text-center">
               And
               <span className="text-primary dark:text-warning">
                 {" "}
                 Guess What?!
               </span>
-            </h3>
+            </h2>
 
             <p className="text-3xl leading-loose italic font-bold text-center">
               {"It's almost here!!!"}

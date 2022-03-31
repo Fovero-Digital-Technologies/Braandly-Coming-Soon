@@ -5,6 +5,11 @@ import { Tooltip, message } from "antd";
 import axios from "axios";
 import { baseUrl } from "../../server/index";
 
+interface Waitlist{
+  fullname: string,
+  email: string
+}
+
 const SignUp = () => {
   const [signedUp, setSignedUp] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
@@ -15,9 +20,8 @@ const SignUp = () => {
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const body = {
-      firstname,
-      lastname,
+    const body:Waitlist = {
+      fullname: `${firstname} ${lastname}`,
       email
     };
 
@@ -32,21 +36,25 @@ const SignUp = () => {
         setLoading(false);
         console.log("SUCCESS!", response);
         message.success(response.data.message);
-        setSignedUp(true)
+        setSignedUp(true);
       })
       .catch((err) => {
         setLoading(false);
         console.log("FAILED...", { err });
         let errorObject;
-        if (err.response.data.message !== undefined) {
-          errorObject = JSON.parse(err.response.data.message);
-          if (errorObject.title === "Member Exists") {
-            message.error("You're already on the early access list");
+        if (err.response !== undefined) {
+          if (err.response.data.message !== undefined) {
+            errorObject = JSON.parse(err.response.data.message);
+            if (errorObject.title === "Member Exists") {
+              message.error("You're already on the early access list. Perhaps you could try another email address?", 10);
+            } else {
+              message.error("Unable to add. Please try again");
+            }
           } else {
             message.error("Unable to add. Please try again");
           }
         } else{
-          message.error("Unable to add. Please try again");
+          message.error(`Unable to add. - ${err.message}`)
         }
       });
   };

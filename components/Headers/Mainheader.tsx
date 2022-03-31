@@ -41,7 +41,7 @@ const MainHeader = (props: any) => {
 
   return (
     <header className="bg-light dark:bg-dark-background py-2 px-5 hidden md:flex justify-between items-center sticky top-0 z-[100] shadow-sm">
-      <Link href="/">
+      <Link href="/" passHref>
         <a>
           <Image
             src="/img/logo/Braandly.svg"
@@ -70,6 +70,7 @@ const MainHeader = (props: any) => {
           ))}
         </div>
         <Switch
+        aria-label="Switch Theme Button"
           checkedChildren={<MdWbSunny className="text-white dark:text-dark" />}
           unCheckedChildren={<FaMoon className="text-white dark:text-dark" />}
           defaultChecked={props.theme.lightMode}

@@ -41,6 +41,7 @@ const MobileHeader = (props: any) => {
 
       <div className="flex gap-3 items-center">
         <Switch
+        aria-label="Switch Theme Button"
           checkedChildren={<MdWbSunny className="text-white dark:text-dark" />}
           unCheckedChildren={<FaMoon className="text-white dark:text-dark" />}
           defaultChecked={props.theme.lightMode}
@@ -57,6 +58,7 @@ const MobileHeader = (props: any) => {
         />
 
         <button
+        aria-label="Mobile Menu Navigation Button"
           className="text-2xl text-dark dark:text-white hover:text-primary dark:hover:text-warning transition ease-in-out duration-300"
           onClick={() => setShowMobileNav(true)}
         >

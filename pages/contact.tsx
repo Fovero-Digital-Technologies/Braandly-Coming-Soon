@@ -4,8 +4,9 @@ import TextField from "@material-ui/core/TextField";
 import { FaFacebook, FaInstagram, FaTwitter, FaCircleNotch } from "react-icons/fa";
 import { Tooltip, message } from "antd";
 import DefaultLayout from "../components/Layouts/DefaultLayout";
-import emailjs from "emailjs-com";
 import { FormEvent } from "react";
+import axios from "axios";
+import { baseUrl } from "../server/index";
 
 const Contact: NextPage = () => {
   interface Icons {
@@ -16,12 +17,10 @@ const Contact: NextPage = () => {
     color?: string;
   }
 
-  interface Message {
-    from_name: string;
-    from_email: string;
-    to_name: string;
-    message: string;
-    reply_to: string;
+  interface Contact{
+    fullname: string,
+    email: string,
+    message: string
   }
 
   const socialIcons: Icons[] = [
@@ -50,50 +49,56 @@ const Contact: NextPage = () => {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [sent, setSent] = useState<boolean>(false);
-  const [from_name, set_From_Name] = useState<string>("");
-  const [from_email, set_From_Email] = useState<string>("");
+  const [fullname, setFromName] = useState<string>("");
+  const [email, setFromEmail] = useState<string>("");
   const [eMessage, setMessage] = useState<string>("");
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    setLoading(true)
-    const emailMessage = {
-      from_name,
-      from_email,
-      to_name: process.env.NEXT_PUBLIC_EMAILJS_EMAILNAME
-        ? process.env.NEXT_PUBLIC_EMAILJS_EMAILNAME
-        : "Braandly",
-      message: eMessage,
-      reply_to: from_email
+    setLoading(true);
+    const body:Contact = {
+      fullname,
+      email,
+      message: eMessage
     };
 
-    console.log(emailMessage);
-    emailjs
-      .send(
-        `${process.env.NEXT_PUBLIC_EMAILJS1_SERVICEID}`,
-        `${process.env.NEXT_PUBLIC_EMAILJS1_TEMPLATEID}`,
-        emailMessage,
-        `${process.env.NEXT_PUBLIC_EMAILJS1_USERID}`
-      )
-      .then(
-        (response) => {
-            setLoading(false)
-        //   console.log("SUCCESS!", response.status, response.text);
-          message.success("Message sent successfully")
-          setSent(true)
-        },
-        (err) => {
-            setLoading(false)
-          console.log("FAILED...", err);
-        //   message.error("An error occured, please try again")
+    console.log(body);
+    axios
+      .post(`${baseUrl}/mails/contact`, body, {
+        headers: {
+          "Access-Control-Allow-Origin": "*"
         }
-      );
+      })
+      .then((response) => {
+        setLoading(false);
+        console.log("SUCCESS!", response);
+        message.success(response.data.message);
+        setSent(true);
+      })
+      .catch((err) => {
+        setLoading(false);
+        console.log("FAILED...", { err });
+        let errorObject;
+        if (err.response !== undefined) {
+          if (err.response.data.message !== undefined) {
+            errorObject = JSON.parse(err.response.data.message);
+            if (errorObject.title === "Member Exists") {
+              message.success("Thanks for your message, we will get back shortly");
+              setSent(true);
+            } else {
+              message.error("Unable to send message. Please try again");
+            }
+          } else {
+            message.error("Unable to send message. Please try again");
+          }
+        } else {
+          message.error(`Error Sending Message. - ${err.message}`);
+        }
+      });
   };
 
-  //   console.log("env",process.env.NEXT_PUBLIC_EMAILJS_SERVICEID)
-  //   console.log("env",process.env.NEXT_PUBLIC_EMAILJS_TEMPLATEID)
-  //   console.log("env",process.env.NEXT_PUBLIC_EMAILJS_EMAILADDRESS)
-  //   console.log("env",process.env.NEXT_PUBLIC_EMAILJS_EMAILNAME)
+
+
 
   return (
     <DefaultLayout
@@ -139,11 +144,11 @@ const Contact: NextPage = () => {
                   <div className="block mb-6">
                     <TextField
                       id="standard-basic"
-                      label="Your Name"
+                      label="Full Name"
                       variant="standard"
-                      className="block w-full dark:text-light"
-                      onChange={(e) => set_From_Name(e.target.value)}
                       required
+                      className="block w-full dark:text-light"
+                      onChange={(e) => setFromName(e.target.value)}
                     />
                   </div>
                   <div className="block mb-6">
@@ -153,7 +158,7 @@ const Contact: NextPage = () => {
                       variant="standard"
                       type="email"
                       className="block w-full"
-                      onChange={(e) => set_From_Email(e.target.value)}
+                      onChange={(e) => setFromEmail(e.target.value)}
                       required
                     />
                   </div>
