@@ -1,7 +1,6 @@
-import {useState, useEffect} from "react"
+import { useState, useEffect } from "react";
 import type { NextPage } from "next";
-// import { connect, useDispatch } from "react-redux";
-// import Lottie from 'react-lottie';
+
 import { LottieAnimation } from "react-lottie-tools";
 import dynamic from "next/dynamic";
 // const LottieAnimation = dynamic(() => import("react-lottie-tools").then((mod:any) => mod.LottieAnimation), {
@@ -12,19 +11,17 @@ import SignUp from "../components/Forms/SignUp";
 import DefaultLayout from "../components/Layouts/DefaultLayout";
 
 const Home: NextPage = () => {
-//   const dispatch = useDispatch();
-const [codetyping, setCodeTyping] = useState<any>(null);
+  //   const dispatch = useDispatch();
+  const [codetyping, setCodeTyping] = useState<any>(null);
 
-useEffect(()=> {
-  if(codetyping === null){
-    import('../public/animation/codetyping.json')
-  .then(data => {
-    // let stringData = JSON.stringify(data)
-    setCodeTyping(data)
-  })
-  }
-},[codetyping])
-
+  useEffect(() => {
+    if (codetyping === null) {
+      import("../public/animation/codetyping.json").then((data) => {
+        // let stringData = JSON.stringify(data)
+        setCodeTyping(data);
+      });
+    }
+  }, [codetyping]);
 
   const tools: string[] = [
     "Brand Creator",
@@ -35,7 +32,7 @@ useEffect(()=> {
     "Brand Inspiration",
     "Palette and Directory",
     "Brand Fonts",
-    "And Many More..."
+    "And Many More...",
   ];
   return (
     <DefaultLayout
@@ -71,13 +68,15 @@ useEffect(()=> {
               <div className="flex item-center justify-center lg:col-span-5 overflow-hidden">
                 <div className="hidden lg:block">
                   {/* <Lottie options={defaultOptions} width={520}  /> */}
-                  {codetyping !== null && <LottieAnimation
-                    animation={codetyping}
-                    //   autoPlay
+                  {codetyping !== null && (
+                    <LottieAnimation
+                      animation={codetyping}
+                      //   autoPlay
                       loop={true}
-                    //   style={{ width: "60px", height: "60px" }}
-                    //   justPlayInView
-                  />}
+                      //   style={{ width: "60px", height: "60px" }}
+                      //   justPlayInView
+                    />
+                  )}
                 </div>
                 <p className="block lg:hidden text-[200px]">👍</p>
               </div>
