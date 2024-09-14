@@ -10,13 +10,13 @@ import { Tooltip, message } from "antd";
 import axios from "axios";
 import { baseUrl } from "../../server/index";
 
-interface Partners{
-  fullname: string,
-  email: string,
-  companyname: string,
-  phonenumber: string,
-  location: string,
-  message: string
+interface Partners {
+  fullname: string;
+  email: string;
+  companyname: string;
+  phonenumber: string;
+  location: string;
+  message: string;
 }
 
 function Partners() {
@@ -39,51 +39,54 @@ function Partners() {
 
   // };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const body:Partners = {
+    const body: Partners = {
       fullname,
       email,
       companyname,
       phonenumber,
       location,
-      message: eMessage
+      message: eMessage,
     };
 
-    console.log(body);
-    axios
-      .post(`${baseUrl}/mails/partner`, body, {
+    // console.log(body);
+
+    try {
+      const response = await axios.post(`${baseUrl}/mails/partner`, body, {
         headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
-      .then((response) => {
-        setLoading(false);
-        console.log("SUCCESS!", response);
-        message.success(response.data.message);
-        setSent(true);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log("FAILED...", { err });
-        let errorObject;
-        if (err.response !== undefined) {
-          if (err.response.data.message !== undefined) {
-            errorObject = JSON.parse(err.response.data.message);
-            if (errorObject.title === "Member Exists") {
-              message.success("Thanks for your interest, we will get back shortly");
-              setSent(true);
-            } else {
-              message.error("Unable to send request. Please try again");
-            }
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+
+      console.log("SUCCESS!", response);
+      message.success(response.data.message);
+      setSent(true);
+    } catch (err: any) {
+      console.log("FAILED...", { err });
+      let errorObject;
+
+      if (err.response) {
+        if (err.response.data.message) {
+          errorObject = JSON.parse(err.response.data.message);
+          if (errorObject.title === "Member Exists") {
+            message.success(
+              "Thanks for your interest, we will get back shortly"
+            );
+            setSent(true);
           } else {
             message.error("Unable to send request. Please try again");
           }
         } else {
-          message.error(`Error Sending Request. - ${err.message}`);
+          message.error("Unable to send request. Please try again");
         }
-      });
+      } else {
+        message.error(`Error Sending Request. - ${err.message}`);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -117,7 +120,12 @@ function Partners() {
                 </a>
               </div>
               <div className="hidden lg:flex justify-center lg:col-span-4">
-                <Image src="/svg/collaborators.svg" alt="Get Started with Braandly Partnership" width={500} height={400} />
+                <Image
+                  src="/svg/collaborators.svg"
+                  alt="Get Started with Braandly Partnership"
+                  width={500}
+                  height={400}
+                />
               </div>
             </div>
           </div>
@@ -125,7 +133,7 @@ function Partners() {
           <hr className="border-light-border dark:border-dark-border" />
 
           <div className="py-20 px-5 lg:px-0">
-            <div className="text-center mx-auto max-w-[700px]" >
+            <div className="text-center mx-auto max-w-[700px]">
               <h2 className="text-4xl font-bold mb-5 dark:text-white leading-tight ">
                 Giving You Amazing Benefits
               </h2>
@@ -137,13 +145,21 @@ function Partners() {
 
             <div className="container mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 py-20 gap-8 items-center">
-                <Image src="/svg/solution.svg" alt="Lifetime Premium Access at Braandkly" width={500} height={400} />
+                <Image
+                  src="/svg/solution.svg"
+                  alt="Lifetime Premium Access at Braandkly"
+                  width={500}
+                  height={400}
+                />
                 <div>
                   <h3 className="text-4xl font-bold mb-5 dark:text-white leading-tight">
                     Lifetime Premium Access!!!
                   </h3>
                   <p className="text-lg leading-tight mb-5">
-                    As a valued partner, we will give you a continuous access to the premium version of our software/apps. This would be a profitable investment which would save you great costs on your brand/bussiness. 
+                    As a valued partner, we will give you a continuous access to
+                    the premium version of our software/apps. This would be a
+                    profitable investment which would save you great costs on
+                    your brand/bussiness.
                   </p>
                 </div>
               </div>
@@ -154,10 +170,17 @@ function Partners() {
                     And More Benefits!!!
                   </h2>
                   <p className="text-lg leading-tight mb-5">
-                    We have planned a lot of benefits and returns for you including premium consultation and support, early access to new features and recognition on our digital platforms.
+                    We have planned a lot of benefits and returns for you
+                    including premium consultation and support, early access to
+                    new features and recognition on our digital platforms.
                   </p>
                 </div>
-                <Image src="/svg/solution.svg" alt="More Benefits from Braandly" width={500} height={400} />
+                <Image
+                  src="/svg/solution.svg"
+                  alt="More Benefits from Braandly"
+                  width={500}
+                  height={400}
+                />
               </div>
             </div>
           </div>

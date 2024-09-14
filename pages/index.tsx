@@ -43,8 +43,8 @@ const Home: NextPage = () => {
         <div className="dark:bg-dark dark:text-light px-4 sm:px-6 md:px-10 py-5">
           <div className="container mx-auto pt-2 md:pt-10 pb-0  lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-10 lg:gap-20 pt-5">
-              <div className="flex flex-col justify-center lg:col-span-5">
-                <h1 className="text-4xl md:text-6xl font-bold mb-10 dark:text-white leading-normal lg:leading-relaxed">
+              <div className="flex flex-col justify-center lg:col-span-5 gap-10">
+                <h1 className="text-3xl md:text-5xl font-bold dark:text-white leading-normal lg:leading-relaxed">
                   We are building a
                   <span className="text-primary dark:text-warning">
                     {" "}
@@ -56,14 +56,23 @@ const Home: NextPage = () => {
                   👍
                 </h1>
 
-                <p className="text-2xl leading-loose lg:mb-8">
+                <p className="text-2xl leading-loose ">
                   <span className="font-bold underline decoration-primary dark:decoration-warning">
                     Braandly
                   </span>{" "}
-                  is the complete branding toolset to help all Business,
-                  Entrepreneurs, Designers and Developers build that perfect
-                  brand they have always wanted to build.
+                  is the complete branding toolset to help all Businesses,
+                  Agencies and Designers build that perfect brand they have
+                  always wanted to build.
                 </p>
+
+                <div className="w-full flex">
+                  <a
+                    className="w-full md:w-fit bg-primary hover:bg-primary-hov text-white text-lg dark:bg-warning dark:hover:bg-warning-hov dark:text-dark px-8 py-3 rounded cursor-pointer transition-all duration-300 ease-in-out text-center block"
+                    href="#waitlist"
+                  >
+                    Join Waitlist
+                  </a>
+                </div>
               </div>
               <div className="flex item-center justify-center lg:col-span-5 overflow-hidden">
                 <div className="hidden lg:block">

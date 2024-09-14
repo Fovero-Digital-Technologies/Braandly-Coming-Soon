@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
 import { useState } from "react";
 import TextField from "@material-ui/core/TextField";
-import { FaFacebook, FaInstagram, FaTwitter, FaCircleNotch } from "react-icons/fa";
+import {
+  FaFacebook,
+  FaInstagram,
+  FaTwitter,
+  FaCircleNotch,
+} from "react-icons/fa";
 import { Tooltip, message } from "antd";
 import DefaultLayout from "../components/Layouts/DefaultLayout";
 import { FormEvent } from "react";
@@ -17,10 +22,10 @@ const Contact: NextPage = () => {
     color?: string;
   }
 
-  interface Contact{
-    fullname: string,
-    email: string,
-    message: string
+  interface Contact {
+    fullname: string;
+    email: string;
+    message: string;
   }
 
   const socialIcons: Icons[] = [
@@ -29,22 +34,22 @@ const Contact: NextPage = () => {
       title: "Facebook",
       link: "https://www.facebook.com",
       icon: <FaFacebook />,
-      color: "#4267B2"
+      color: "#4267B2",
     },
     {
       tooltip: "Follow our Instagram Page",
       title: "Instagram",
       link: "https://www.instagram.com",
       icon: <FaInstagram />,
-      color: "#1DA1F2"
+      color: "#1DA1F2",
     },
     {
       tooltip: "Follow us on Twitter",
       title: "Twitter",
       link: "https://www.twitter.com",
       icon: <FaTwitter />,
-      color: "#8a3ab9"
-    }
+      color: "#8a3ab9",
+    },
   ];
 
   const [loading, setLoading] = useState<boolean>(false);
@@ -53,52 +58,52 @@ const Contact: NextPage = () => {
   const [email, setFromEmail] = useState<string>("");
   const [eMessage, setMessage] = useState<string>("");
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    const body:Contact = {
+    const body: Contact = {
       fullname,
       email,
-      message: eMessage
+      message: eMessage,
     };
 
-    console.log(body);
-    axios
-      .post(`${baseUrl}/mails/contact`, body, {
+    // console.log(body);
+
+    try {
+      const response = await axios.post(`${baseUrl}/mails/contact`, body, {
         headers: {
-          "Access-Control-Allow-Origin": "*"
-        }
-      })
-      .then((response) => {
-        setLoading(false);
-        console.log("SUCCESS!", response);
-        message.success(response.data.message);
-        setSent(true);
-      })
-      .catch((err) => {
-        setLoading(false);
-        console.log("FAILED...", { err });
-        let errorObject;
-        if (err.response !== undefined) {
-          if (err.response.data.message !== undefined) {
-            errorObject = JSON.parse(err.response.data.message);
-            if (errorObject.title === "Member Exists") {
-              message.success("Thanks for your message, we will get back shortly");
-              setSent(true);
-            } else {
-              message.error("Unable to send message. Please try again");
-            }
+          "Access-Control-Allow-Origin": "*",
+        },
+      });
+
+      console.log("SUCCESS!", response);
+      message.success(response.data.message);
+      setSent(true);
+    } catch (err: any) {
+      console.log("FAILED...", { err });
+      let errorObject;
+
+      if (err.response) {
+        if (err.response.data.message) {
+          errorObject = JSON.parse(err.response.data.message);
+          if (errorObject.title === "Member Exists") {
+            message.success(
+              "Thanks for your message, we will get back shortly"
+            );
+            setSent(true);
           } else {
             message.error("Unable to send message. Please try again");
           }
         } else {
-          message.error(`Error Sending Message. - ${err.message}`);
+          message.error("Unable to send message. Please try again");
         }
-      });
+      } else {
+        message.error(`Error Sending Message. - ${err.message}`);
+      }
+    } finally {
+      setLoading(false);
+    }
   };
-
-
-
 
   return (
     <DefaultLayout
@@ -175,14 +180,19 @@ const Contact: NextPage = () => {
                     />
                   </div>
                   <div className="flex mt-10">
-                    {!loading && <input
-                      type="submit"
-                      value="Send Message"
-                      className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer"
-                    />}
-                    {loading && <div
-                      className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer opacity-80 inline-flex items-center gap-5 cursor-wait justify-center"
-                    ><span>Sending...</span> <FaCircleNotch className="animate-spin" /></div>}
+                    {!loading && (
+                      <input
+                        type="submit"
+                        value="Send Message"
+                        className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer"
+                      />
+                    )}
+                    {loading && (
+                      <div className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer opacity-80 inline-flex items-center gap-5 cursor-wait justify-center">
+                        <span>Sending...</span>{" "}
+                        <FaCircleNotch className="animate-spin" />
+                      </div>
+                    )}
                   </div>
                 </form>
               </>
