@@ -11,14 +11,18 @@ import "@fontsource/koho/700.css";
 import store from "../store/store";
 import type { AppProps } from "next/app";
 import MasterLayout from "../components/Layouts/MasterLayout";
+import GoogleAnalytics from "../components/GoogleAnalytics";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <Provider store={store}>
-      <MasterLayout>
-        <Component {...pageProps} />
-      </MasterLayout>
-    </Provider>
+    <>
+      <Provider store={store}>
+        <MasterLayout>
+          <Component {...pageProps} />
+        </MasterLayout>
+      </Provider>
+      <GoogleAnalytics />
+    </>
   );
 }
 

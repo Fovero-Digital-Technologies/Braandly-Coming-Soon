@@ -184,11 +184,11 @@ const Contact: NextPage = () => {
                       <input
                         type="submit"
                         value="Send Message"
-                        className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer"
+                        className="w-full bg-primary hover:bg-primary-hov text-white text-lg dark:bg-warning dark:hover:bg-warning-hov px-4 py-2 rounded cursor-pointer dark:text-dark transition-all duration-300 ease-in-out"
                       />
                     )}
                     {loading && (
-                      <div className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer opacity-80 inline-flex items-center gap-5 cursor-wait justify-center">
+                      <div className="w-full bg-primary text-white text-lg dark:bg-warning dark:text-dark px-4 py-2 rounded opacity-80 inline-flex items-center gap-5 cursor-wait justify-center transition-all duration-300 ease-in-out">
                         <span>Sending...</span>{" "}
                         <FaCircleNotch className="animate-spin" />
                       </div>

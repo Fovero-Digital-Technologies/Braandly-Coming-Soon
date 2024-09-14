@@ -99,7 +99,7 @@ function Partners() {
           <div className="container mx-auto  py-20 px-5 lg:px-0">
             <div className="grid grid-cols-1 lg:grid-cols-7 pt-5 gap-5">
               <div className="flex flex-col justify-center col-span-3">
-                <h1 className="text-5xl md:text-6xl font-bold mb-5 dark:text-white leading-normal lg:leading-relaxed">
+                <h1 className="text-3xl md:text-5xl font-bold mb-5 dark:text-white leading-normal lg:leading-relaxed">
                   <span className="text-primary dark:text-warning">
                     Join, Partner and Gain Limitless Opportunities
                   </span>{" "}
@@ -114,9 +114,9 @@ function Partners() {
 
                 <a
                   href="#partners_form"
-                  className="bg-primary block dark:bg-warning text-2xl rounded text-white hover:text-white rounded px-6 py-3 font-medium w-full md:w-1/2 text-center"
+                  className="w-full md:w-fit bg-primary hover:bg-primary-hov text-white text-lg dark:bg-warning dark:hover:bg-warning-hov dark:text-dark px-8 py-3 rounded cursor-pointer transition-all duration-300 ease-in-out text-center block"
                 >
-                  Get Started
+                  Become Braandly&apos;s partner
                 </a>
               </div>
               <div className="hidden lg:flex justify-center lg:col-span-4">
@@ -269,13 +269,13 @@ function Partners() {
                       {!loading && (
                         <input
                           type="submit"
-                          value="Join Partners"
-                          className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer"
+                          value="Become Partner"
+                          className="w-full bg-primary hover:bg-primary-hov text-white text-lg dark:bg-warning dark:hover:bg-warning-hov px-4 py-2 rounded cursor-pointer dark:text-dark transition-all duration-300 ease-in-out"
                         />
                       )}
 
                       {loading && (
-                        <div className="w-full bg-primary text-white text-lg dark:bg-warning px-4 py-2 rounded cursor-pointer opacity-80 inline-flex items-center gap-5 cursor-wait justify-center">
+                        <div className="w-full bg-primary text-white text-lg dark:bg-warning dark:text-dark px-4 py-2 rounded opacity-80 inline-flex items-center gap-5 cursor-wait justify-center transition-all duration-300 ease-in-out">
                           <span>Sending...</span>{" "}
                           <FaCircleNotch className="animate-spin" />
                         </div>
