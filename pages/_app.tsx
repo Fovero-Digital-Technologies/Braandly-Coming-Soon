@@ -19,10 +19,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Component {...pageProps} />
       </MasterLayout>
     </Provider>
-    // <Provider store={store}>
-    //   <Component {...pageProps} />
-    // </Provider>
-    
   );
 }
 

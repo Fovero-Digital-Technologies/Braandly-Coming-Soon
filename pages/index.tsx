@@ -24,14 +24,14 @@ const Home: NextPage = () => {
   }, [codetyping]);
 
   const tools: string[] = [
-    "Brand Creator",
-    "Brand Palette Generator",
-    "Brand Gradient Generator",
-    "Brand Font Tools",
-    "Image Color Extractor",
-    "Brand Inspiration",
-    "Palette and Directory",
-    "Brand Fonts",
+    "Brand Management Tools",
+    "Brand Workspace Tools",
+    "Brand Identity Tools",
+    "Assets Collection",
+    "Brand Links",
+    "Branding Tips",
+    "Marketing Tasker",
+    "Brand Inpiration",
     "And Many More...",
   ];
   return (
@@ -96,7 +96,7 @@ const Home: NextPage = () => {
               </p>
             </div>
             <p className="text-2xl leading-loose text-center">
-              Which is why I have created{" "}
+              Which is why we have created{" "}
               <span className="font-bold">Braandly</span>
             </p>
             <p className="text-2xl leading-loose mb-8 text-center">
@@ -105,7 +105,7 @@ const Home: NextPage = () => {
             <ul className="list-none my-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 lg:gap-x-20">
               {tools.map((tool) => (
                 <li
-                  className="text-lg rounded bg-light px-4 py-3 border border-light-border shadow-sm dark:bg-dark-background dark:text-light hover:shadow-lg hover:transform hover:scale-[1.2] cursor-pointer transition duration-300 ease-in-out"
+                  className="text-lg rounded bg-light px-4 py-3 border border-light-border shadow-sm dark:bg-dark-background dark:text-light hover:shadow-lg hover:transform hover:scale-[1.1] cursor-pointer transition duration-300 ease-in-out"
                   key={tool}
                 >
                   ✔️ {tool}
